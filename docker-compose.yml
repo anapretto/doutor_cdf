@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: admin
+    volumes:
+      - ./mongodb/init.sh:/docker-entrypoint-initdb.d/init.sh
+      - ./mongodb/codigos_dtc.csv:/codigos_dtc.csv
+  servidor:
+    build:
+      context: ./nextjs
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./nextjs:/app
+
+

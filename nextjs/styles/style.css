@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body{
+    --cor-principal: #F48120;
+    --cor-hover: #F15A29;
+    --cor-destaque:  #002A4B;
+    --cor-fundo: #F1F6FB;
+    --cor-cards: #FAFCFF;
+    --cor-textos: #333333; 
+    --cor-textos-pq: #959595;
+    --cor-footer: #EBF0F5;
+    font-family: 'Lato', sans-serif;
+    background-color: var(--cor-fundo);
+    background-image: url(../public/marca-dagua.svg);
+    background-repeat: no-repeat;
+    color: var(--cor-textos);
+}
+
+.fundo-footer{
+    background-color: var(--cor-footer);
+}
+
+.fundo-geral{
+    background-color: var(--cor-fundo);
+}
+
+.fundo-cards{
+    background-color: var(--cor-cards);
+}
+
+.borda-principal{
+    border-color: var(--cor-principal) !important;
+}
+
+
+.btn-principal{
+    background-color: var(--cor-principal);
+    color: #fff !important;
+}
+
+.btn-principal:hover{
+    background-color: var(--cor-hover);
+    color: #fff;
+}
+
+.banners{
+    height: 80vh;
+    width: 700px;
+}
+
+.banner-2{
+    width: 600px;
+    height: 60vh;
+}
+
+.text0{
+    color: var(--cor-textos) !important;
+}
+
+.texto-pq{
+    color: var(--cor-textos-pq);
+}
+
+.btn-pesquisa, .input-pesquisa{
+    background-color: #fff;
+    padding: 15px 50px !important;
+    color: var(--cor-textos);
+}
+
+.zindex{
+    z-index: 1050;
+}
+
+.hide{
+    display: none;
+}
+
+.main-container{
+    height: 100vh;
+}
+
+#searchResults{
+    background-color: var(--cor-cards);
+    border-radius: 5px;
+}
+
+#searchResults p{
+    margin: 1em 2em;
+    padding: 0;
+    text-align: left;
+    font-size: 1.2em;
+}
+
+@media (max-width: 586px){
+    .logo{
+        height: 30px;
+    }
+    .banners{
+        width: 100%;
+    }
+    .texto-pq{
+        display: none;
+    }
+    .footer-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
