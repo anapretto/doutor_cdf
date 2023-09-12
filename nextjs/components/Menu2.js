@@ -8,7 +8,7 @@ import Home from '../pages/index.js';
 const Menu2 = () => {
 
   const auth = getAuth()
-  const [user, loading] = useAuthState(auth)
+  let [user, loading] = useAuthState(auth)
 
   return (
     <header>
@@ -54,7 +54,7 @@ const Menu2 = () => {
                     data-bs-toggle="dropdown"
                     aria-expanded="false"
                   >
-                    {user.displayName}
+                    {(user && user.displayName) || ''}
                   </a>
                   <ul className="dropdown-menu shadow-sm p-3 mb-5 fundo-cards rounded">
                     <li>

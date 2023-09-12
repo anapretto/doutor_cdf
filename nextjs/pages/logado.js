@@ -1,11 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
 import Menu2 from '../components/Menu2';
-import Busca2 from '../components/Busca2';
 import ModalTutorial from '../components/ModalTutorial';
 import ModalSair from '../components/ModalSair';
 import Footer from '../components/Footer';
-
+import Busca2 from "../components/Busca2";
 
 function Logado() {
 
