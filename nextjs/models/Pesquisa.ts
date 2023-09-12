@@ -1,4 +1,4 @@
-import {mongoose} from m
+import mongoose from 'mongoose';
 
 const PesquisaSchema = new mongoose.Schema({
     usuario: String,
