@@ -23,7 +23,7 @@ export default async function handler(req, res) {
 
         return res.status(200).json({error: false, detalhes: codigo});
     } else {
-        return res.status(200).json({error: 'Method not allowed'});
+        return res.status(404).json('Erro de autenticação');
     }
 }
 
