@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form";
 import ResultadoPesquisa from "./ResultadoPesquisa";
 import SemResultado from "./SemResultado";
 import LimiteDePesquisa from "./LimiteDePesquisa";
+import {parseCookies} from "nookies";
 
 function Busca2(){
     const [busca, setBusca] = React.useState({
@@ -18,6 +19,8 @@ function Busca2(){
 
     const {register, handleSubmit} = useForm()
 
+    const {tokenDaSessao} = parseCookies();
+
     function onSubmit(data: any) {
         setBusca(data.busca);
         setResultado({'codigo':''});
@@ -28,7 +31,7 @@ function Busca2(){
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    "session_id": 23,
+                    "session_id": tokenDaSessao,
                     "cdf": data.busca,
                 }),
             })
