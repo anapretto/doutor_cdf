@@ -82,6 +82,7 @@ body{
 #searchResults{
     background-color: var(--cor-cards);
     border-radius: 5px;
+    padding: 10px;
 }
 
 #searchResults p{

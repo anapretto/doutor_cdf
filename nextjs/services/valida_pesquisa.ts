@@ -5,6 +5,7 @@ type DadosDaConsulta = {
     session_id: string;
     cdf: string;
 }
+
 export default async function ValidaPesquisa(body: DadosDaConsulta): Promise<boolean> {
     connectDB();
     let autorizado = true;

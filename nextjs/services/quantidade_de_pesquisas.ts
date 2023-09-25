@@ -1,5 +1,6 @@
-import Pesquisa from "../models/Pesquisa";
 import connectDB from "../lib/mondodb";
+import Pesquisa from "../models/Pesquisa";
+
 export default async function QuantidadeDePesquisas(session_id)
 {
     connectDB();

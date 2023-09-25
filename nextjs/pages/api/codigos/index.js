@@ -5,20 +5,20 @@ import ValidaPesquisa from "../../../services/valida_pesquisa";
 export default async function handler(req, res) {
     const {cdf} = req.body;
     const autorizado = await ValidaPesquisa(req.body);
-
-    if(!autorizado){
-        res.status(401).json({error: 'Limite de pesquisa excedido'});
-    }else{
+    // const autorizado = true;
+    if (!autorizado) {
+        res.status(200).json({error: 'Limite de pesquisa excedido'});
+    } else {
         await connectDB();
         if (req.method === 'POST') {
-            console.log(req.body);
             const codigo = await Codigo.findOne({codigo: cdf});
+            // const codigo = {'codigo': 'B0001', 'componente': 'asda', 'segunda_linha': 'asdasdas'};
             if (!codigo) {
-                res.status(404).json({error: 'Codigo não encontrado'});
+                res.status(200).json({error: 'Codigo não encontrado'});
             }
-            res.status(200).json(codigo);
+            res.status(200).json({error: false, detalhes: codigo});
         } else {
-            res.status(405).json({error: 'Method not allowed'});
+            res.status(200).json({error: 'Method not allowed'});
         }
     }
 }
