@@ -4,7 +4,7 @@
     }
 
     // "Enter" no campo de busca
-    document.getElementById('busca').addEventListener('keyup', function(event) {
+    window.document.getElementById('busca').addEventListener('keyup', function(event) {
         if (event.key === 'Enter') {
             ativarCollapse();
         }

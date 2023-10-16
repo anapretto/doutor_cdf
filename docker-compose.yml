@@ -22,17 +22,14 @@ services:
       ME_CONFIG_MONGODB_ENABLE_ADMIN: "true"
     depends_on:
       - mongodb
-
-    
-
-#  servidor:
-#    build:
-#      context: ./nextjs
-#    ports:
-#      - "3000:3000"
-#    volumes:
-#      - ./nextjs:/app
-#    depends_on:
-#        - mongodb
+  servidor:
+    build:
+      context: ./nextjs
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./nextjs:/app
+    depends_on:
+        - mongodb
 
 

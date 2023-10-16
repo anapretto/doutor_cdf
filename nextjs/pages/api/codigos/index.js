@@ -1,25 +1,29 @@
 import connectDB from "../../../lib/mondodb";
 import Codigo from "../../../models/Codigo";
 import ValidaPesquisa from "../../../services/valida_pesquisa";
+import RecuperarDadosDaSessao from "../../../services/recuperar_dados_da_sessao";
 
 export default async function handler(req, res) {
-    const {cdf} = req.body;
-    const autorizado = await ValidaPesquisa(req.body);
+    if (req.method === 'POST') {
+        const {cdf, session_id} = req.body;
 
-    if(!autorizado){
-        res.status(401).json({error: 'Limite de pesquisa excedido'});
-    }else{
+        const dadosDaSessao = RecuperarDadosDaSessao(session_id);
+        if(!dadosDaSessao) return res.status(500).json('Erro de autenticacao');
+
         await connectDB();
-        if (req.method === 'POST') {
-            console.log(req.body);
-            const codigo = await Codigo.findOne({codigo: cdf});
-            if (!codigo) {
-                res.status(404).json({error: 'Codigo não encontrado'});
-            }
-            res.status(200).json(codigo);
-        } else {
-            res.status(405).json({error: 'Method not allowed'});
+        const codigo = await Codigo.findOne({codigo: cdf});
+        const autorizado = await ValidaPesquisa(dadosDaSessao.id, cdf);
+        if(!autorizado){
+            return res.status(200).json({error: 'Limite de pesquisa excedido'});
         }
+
+        if (!codigo) {
+            return res.status(200).json({error: 'Codigo não encontrado'});
+        }
+
+        return res.status(200).json({error: false, detalhes: codigo});
+    } else {
+        return res.status(404).json('Erro de autenticação');
     }
 }
 
